@@ -1,0 +1,141 @@
+.upload-page {
+  min-height: calc(100vh - 69px);
+  padding: 40px 34px;
+  color: #e6edf3;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(0, 255, 171, 0.06), transparent 25%),
+    #05080d;
+}
+
+.upload-heading {
+  max-width: 640px;
+}
+
+.upload-heading > p,
+.upload-result span {
+  color: #00ffab;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.upload-heading h1 {
+  margin: 12px 0;
+  font-size: clamp(32px, 5vw, 52px);
+}
+
+.upload-heading > span {
+  color: #7c8b94;
+  line-height: 1.7;
+}
+
+.upload-card {
+  max-width: 650px;
+  margin-top: 38px;
+  padding: 42px;
+  border: 1px solid rgba(0, 255, 171, 0.18);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.upload-card > svg {
+  color: #00ffab;
+}
+
+.upload-card h2 {
+  margin: 18px 0 10px;
+  font-size: 18px;
+}
+
+.upload-card p {
+  max-width: 510px;
+  color: #81909a;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.upload-card code {
+  color: #b8c8ce;
+}
+
+.upload-button,
+.upload-result button,
+.upload-result a {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 28px;
+  padding: 13px 17px;
+  border: 1px solid rgba(0, 255, 171, 0.45);
+  color: #00ffab;
+  background: rgba(0, 255, 171, 0.08);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  cursor: pointer;
+}
+
+.upload-button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.upload-error {
+  margin-top: 18px;
+  color: #ff8989;
+  font-size: 12px;
+}
+
+.upload-result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 650px;
+  margin-top: 18px;
+  padding: 20px;
+  border: 1px solid rgba(171, 195, 208, 0.13);
+  background: rgba(11, 20, 29, 0.8);
+}
+
+.upload-result strong,
+.upload-result small {
+  display: block;
+}
+
+.upload-result strong {
+  margin: 7px 0 4px;
+  font-size: 13px;
+}
+
+.upload-result small {
+  color: #7c8b94;
+  font-size: 10px;
+}
+
+.upload-result-actions { display: flex; align-items: center; gap: 10px; }
+
+.upload-result a { margin: 0; color: #00ffab; text-decoration: none; }
+
+.upload-result button {
+  margin: 0;
+  color: #ff9191;
+  border-color: rgba(255, 100, 100, 0.3);
+  background: rgba(255, 100, 100, 0.06);
+}
+
+@media (max-width: 600px) {
+  .upload-page {
+    padding: 28px 20px;
+  }
+
+  .upload-card {
+    padding: 28px;
+  }
+
+  .upload-result {
+    align-items: flex-start;
+    gap: 20px;
+    flex-direction: column;
+  }
+
+  .upload-result-actions { width: 100%; flex-direction: column; align-items: stretch; }
+  .upload-result a, .upload-result button { justify-content: center; }
+}

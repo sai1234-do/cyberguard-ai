@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #05080d;
+}
+
+body {
+  overflow-x: hidden;
+  color: #e6edf3;
+  font-family: Inter, Arial, sans-serif;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+code,
+.eyebrow,
+.sidebar-label,
+.sidebar-brand small,
+.metric-card p,
+.metric-card small,
+.incident-row small,
+.incident-row em,
+.incident-row time,
+.generate-event,
+.upload-heading > p,
+.upload-result span {
+  font-family: "DM Mono", Consolas, monospace;
+}

@@ -1,0 +1,7 @@
+timestamp,event_type,severity,source_ip,destination_ip,username,country,device,failed_attempts,bytes_transferred,description
+2026-10-04 09:00:00,login_failed,high,185.220.101.10,192.168.1.10,admin,Russia,Windows-PC,7,0,Multiple failed login attempts detected
+2026-10-04 09:05:00,login_failed,medium,103.25.44.21,192.168.1.11,sai,India,Laptop,3,0,Unusual login activity detected
+2026-10-04 09:10:00,data_transfer,high,192.168.1.50,10.0.0.20,sai,India,Server,0,15000000,Large amount of data transferred
+2026-10-04 09:15:00,port_scan,high,45.77.22.11,192.168.1.100,unknown,USA,Unknown,0,0,Multiple ports scanned from external source
+2026-10-04 09:20:00,login_failed,high,91.210.12.44,192.168.1.10,admin,Germany,Windows-PC,8,0,Repeated failed authentication attempts
+2026-10-04 09:25:00,login_success,low,192.168.1.25,192.168.1.10,sai,India,Laptop,0,0,Normal successful login

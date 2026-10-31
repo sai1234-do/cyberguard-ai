@@ -1,0 +1,6 @@
+timestamp,event_type,severity,source_ip,destination_ip,username,country,device,failed_attempts,bytes_transferred,anomaly_score,risk_score,is_suspicious,description
+2026-08-27 09:15:00,failed_login,medium,192.168.1.10,10.0.0.5,admin,India,Laptop,3,0,0.25,35,false,Multiple failed login attempts
+2026-08-27 09:18:00,successful_login,low,192.168.1.10,10.0.0.5,admin,India,Laptop,0,0,0.05,10,false,Successful authentication
+2026-08-27 09:22:00,brute_force,high,185.220.101.45,10.0.0.5,admin,Russia,Unknown,25,0,0.91,88,true,Repeated authentication attempts detected
+2026-08-27 09:30:00,port_scan,high,45.155.205.10,10.0.0.8,,Netherlands,Unknown,0,0,0.87,82,true,Multiple ports scanned
+2026-08-27 09:45:00,malware_detected,critical,10.0.0.20,10.0.0.50,user1,India,Desktop,0,15000000,0.97,96,true,Malware signature detected
