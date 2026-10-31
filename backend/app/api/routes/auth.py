@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 from app.core.roles import UserRole
 from app.core.security import (
     create_access_token,
-    decode_access_token,
+    
     get_current_user,
     hash_password,
     verify_password,
@@ -13,7 +13,7 @@ from app.core.security import (
 from app.db.database import get_db
 from app.models.user import User
 from app.schemas.auth import (
-    LoginRequest,
+    
     RegisterRequest,
     TokenResponse,
     UserResponse,
@@ -56,7 +56,11 @@ def register(
         full_name=request.full_name,
         email=request.email,
         password_hash=hash_password(request.password),
-        role=request.role.value,
+        role=(
+          request.role.value
+          if request.role != UserRole.ADMIN
+          else UserRole.SECURITY_ANALYST.value
+        ),
     )
 
     db.add(user)
