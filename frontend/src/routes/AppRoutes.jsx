@@ -7,17 +7,31 @@ import Incidents from "../pages/Incidents";
 import IncidentDetails from "../pages/IncidentDetails";
 import SecurityEvents from "../pages/SecurityEvents";
 import Analytics from "../pages/Analytics";
+import AttackIntelligence from "../pages/AttackIntelligence";
+
 import { useAuth } from "../context/AuthContext";
+
 
 function ProtectedRoute() {
   const { operator } = useAuth();
-  return operator ? <Outlet /> : <Navigate to="/login" replace />;
+
+  return operator
+    ? <Outlet />
+    : <Navigate to="/login" replace />;
 }
+
 
 function EntryRoute() {
   const { operator } = useAuth();
-  return <Navigate to={operator ? "/dashboard" : "/login"} replace />;
+
+  return (
+    <Navigate
+      to={operator ? "/dashboard" : "/login"}
+      replace
+    />
+  );
 }
+
 
 function AppRoutes() {
   return (
@@ -31,11 +45,18 @@ function AppRoutes() {
         <Route path="/incidents/:id" element={<IncidentDetails />} />
         <Route path="/events" element={<SecurityEvents />} />
         <Route path="/analytics" element={<Analytics />} />
+
+        <Route
+          path="/attack-intelligence"
+          element={<AttackIntelligence />}
+        />
       </Route>
+
       <Route path="/" element={<EntryRoute />} />
       <Route path="*" element={<EntryRoute />} />
     </Routes>
   );
 }
+
 
 export default AppRoutes;

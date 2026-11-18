@@ -3,6 +3,7 @@ import {
   Activity,
   BarChart3,
   FileUp,
+  GitBranch,
   LayoutDashboard,
   Radio,
   ShieldCheck,
@@ -12,14 +13,16 @@ import {
 import { useSecurity } from "../../context/SecurityContext";
 import "./AppSidebar.css";
 
+
 function AppSidebar() {
   const { incidents } = useSecurity();
 
   const links = [
-    ["/upload", "Upload Data", FileUp,],
+    ["/upload", "Upload Data", FileUp],
     ["/dashboard", "Overview", LayoutDashboard],
     ["/incidents", "Incidents", Siren],
     ["/events", "Security Events", Radio],
+    ["/attack-intelligence", "Attack Intelligence", GitBranch],
     ["/analytics", "Analytics", BarChart3],
   ];
 
@@ -38,12 +41,23 @@ function AppSidebar() {
 
       <nav>
         {links.map(([to, label, Icon]) => (
-          <NavLink key={to} to={to} className="sidebar-link">
+          <NavLink
+            key={to}
+            to={to}
+            className="sidebar-link"
+          >
             <Icon size={17} />
+
             {label}
 
             {label === "Incidents" && incidents.length > 0 && (
-              <em>{String(incidents.length).padStart(2, "0")}</em>
+              <em>
+                {String(incidents.length).padStart(2, "0")}
+              </em>
+            )}
+
+            {label === "Attack Intelligence" && (
+              <em className="sidebar-new">NEW</em>
             )}
           </NavLink>
         ))}
@@ -63,5 +77,6 @@ function AppSidebar() {
     </aside>
   );
 }
+
 
 export default AppSidebar;

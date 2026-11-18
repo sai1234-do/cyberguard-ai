@@ -1,4 +1,3 @@
-
 const API_BASE_URL = (
   import.meta.env.VITE_API_BASE_URL ||
   "http://127.0.0.1:8000"
@@ -38,7 +37,7 @@ async function request(endpoint, options = {}) {
       const error = await response.json();
       message = error.detail || message;
     } catch {
-      // Keep default message.
+      // Keep the default error.
     }
 
     throw new Error(message);
@@ -82,9 +81,7 @@ export const api = {
   },
 
   getIncidentEvents(incidentId) {
-    return request(
-      `/incidents/${incidentId}/events`
-    );
+    return request(`/incidents/${incidentId}/events`);
   },
 
   getSecurityEvents({
@@ -100,30 +97,19 @@ export const api = {
     params.set("page", page);
     params.set("page_size", pageSize);
 
-    if (search) {
-      params.set("search", search);
-    }
-
-    if (severity) {
-      params.set("severity", severity);
-    }
-
-    if (eventType) {
-      params.set("event_type", eventType);
-    }
+    if (search) params.set("search", search);
+    if (severity) params.set("severity", severity);
+    if (eventType) params.set("event_type", eventType);
 
     if (isSuspicious !== "") {
       params.set("is_suspicious", isSuspicious);
     }
 
-    return request(
-      `/events?${params.toString()}`
-    );
+    return request(`/events?${params.toString()}`);
   },
 
   uploadSecurityCsv(file) {
     const formData = new FormData();
-
     formData.append("file", file);
 
     return request(
@@ -153,6 +139,44 @@ export const api = {
         body: JSON.stringify({
           assigned_to: assignedTo,
         }),
+      }
+    );
+  },
+
+  // ========================================================
+  // ATTACK INTELLIGENCE CENTER
+  // ========================================================
+
+  getAttackCampaigns(windowMinutes = 30) {
+    const params = new URLSearchParams({
+      window_minutes: String(windowMinutes),
+      limit: "1000",
+    });
+
+    return request(
+      `/api/attack-intelligence/campaigns?${params.toString()}`
+    );
+  },
+
+  getAttackCampaign(campaignId, windowMinutes = 30) {
+    const params = new URLSearchParams({
+      window_minutes: String(windowMinutes),
+    });
+
+    return request(
+      `/api/attack-intelligence/campaigns/${encodeURIComponent(campaignId)}?${params.toString()}`
+    );
+  },
+
+  analyzeAttackCampaign(campaignId, windowMinutes = 30) {
+    const params = new URLSearchParams({
+      window_minutes: String(windowMinutes),
+    });
+
+    return request(
+      `/api/attack-intelligence/campaigns/${encodeURIComponent(campaignId)}/analyze?${params.toString()}`,
+      {
+        method: "POST",
       }
     );
   },

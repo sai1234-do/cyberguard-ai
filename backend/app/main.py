@@ -18,6 +18,7 @@ from app.api.routes.auth import router as auth_router
 from app.api.routes.events import router as events_router
 from app.api import reports
 from app.api import incidents
+from app.api.attack_intelligence import router as attack_intelligence_router
 
 
 def create_initial_admin():
@@ -111,6 +112,7 @@ app.include_router(auth_router)
 app.include_router(events_router)
 app.include_router(incidents.router)
 app.include_router(reports.router)
+app.include_router(attack_intelligence_router)
 
 
 @app.get("/")
